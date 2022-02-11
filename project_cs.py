@@ -1,7 +1,7 @@
-import pandas as pd
 import mysql.connector as sql
 
-conn = sql.connect(host = "localhost", user="root", passwd="123456789", database="")
+conn = sql.connect(host = "localhost", user="root", passwd="", database="")
+cursor = mycon.cursor()
 
 def landing_page():
     print("Welcome to our Medical Website Project.")
@@ -11,7 +11,7 @@ def landing_page():
 
 def showlist()
     print("Display all details of medicines available")
-    df = pd.read_sql("select "medicines" from "table name", conn)
+    df = cursor.execute(" Select medicine from medi_project") 
     print(df)
     
 def sortedmedicines()
@@ -22,10 +22,10 @@ def sortedmedicines()
     print("Symptom 4")
     print("Symptom 5")
     symptom = input("Type your symptom: ")
-    age = input("Type your age: ")
+    age = int(input("Type your age: "))
     sex = input("Type your sex(m/f): ")
-    df = pd.read_sql("select * from "table name" where "symptom" = symptom, "age" = age, "sex" = sex)
-    print(df)
+    dl = cursor.execute("select * from medi_project where symptoms = {}, age > {}".format(symptoms, age))
+    print(dl)
 
 def continue_page():
     continue_lpage = input(p_name," do you want to continue (press y for yes and n for no): ")
