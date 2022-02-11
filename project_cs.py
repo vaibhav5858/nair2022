@@ -45,21 +45,21 @@ def continue_page():
 def payment_page():
     order = input("Enter your Medicine Code please : "))
     quant = input("Enter the quantity: "))
-    if order == m01:
+    if order == "m01":
         total_price = 150*x
         print("You have bought ")
         print("Your total is," total_price)
-    elif order == m02:
-        total_price = 150*x
-        print("You have bought ")
-        print("Your total is," total_price)
-    
-    elif order == m03:
+    elif order == "m02":
         total_price = 150*x
         print("You have bought ")
         print("Your total is," total_price)
     
-    elif order == m04:
+    elif order == "m03":
+        total_price = 150*x
+        print("You have bought ")
+        print("Your total is," total_price)
+    
+    elif order == "m04":
         total_price = 150*x
         print("You have bought ")
         print("Your total is," total_price)
@@ -67,8 +67,7 @@ def payment_page():
     else:
         print("Enter the correct value")
         payment_page()
-    
-    
+
 landing_page()
 continue_page()
 payment_page()
@@ -76,5 +75,3 @@ payment_page()
 
 
                     
-    
-    
