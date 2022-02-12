@@ -1,2 +1,2 @@
-# nair2022
+# School_Comp_Project
 Medi Project 
