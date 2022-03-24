@@ -1,0 +1,92 @@
+import mysql.connector as sql
+
+conn = sql.connect(host = "localhost", user="root", passwd="password", database="mysql")
+cursor = conn.cursor()
+
+def landing_page():
+    print("Welcome to our Medical Website Project.")
+    p_name = input("Please enter your good name: ")
+    print("Hi ", p_name, ", hope you are doing fine")
+    print("  ")
+
+def showlist():
+    print("Display details of all medicines available")
+    print("  ")
+    cursor.execute(" Select medicine,code from medi_project")
+    df = cursor.fetchall()
+    count = cursor.rowcount
+    print("These are the number of medicines avaliable: ", count)
+    for row in df:
+        print(row)
+    
+
+def sortedmedicines():
+    print("Symptoms:")
+    print("Headache")
+    print("Fever")
+    print("Aches and Pain")
+    print("Cold")
+    print("Nausea")
+    symptoms = input("Type your symptom: ")
+    print("  ")
+    cursor.execute("select medicine,code from medi_project where symptoms = '{}' ".format(symptoms,))
+    dl= cursor.fetchall()
+    count = cursor.rowcount
+    print("These are the number of medicines avaliable: ", count)
+    for row in dl:
+        print(row)
+
+def continue_page():
+    print("Find out the list of medicines  or find out the medicine required for you.")
+    print("  ")
+    choice = input("Type '1' for the first option and Type '2' for the second option: ")
+    if choice == "1":
+        showlist()
+    elif choice == "2":
+        sortedmedicines()
+    else:
+        print("please type the correct value ", p_name)
+        continue_page()
+
+
+def payment_page():
+    print("  ")
+    print("If you order more then 5 medicines you get a 50% discount" )
+    order = input("Enter your Medicine Code please : ")
+    quant = int(input("Enter the quantity: "))
+    if order == "m01":
+        total_price = 150*quant
+        if total_price >= 750:
+            print("Your transaction is complete ")
+            print("Your total is,",total_price/2,". 50% applied")
+        else:
+            print("Your transaction is complete ")    
+            print("Your total is,",total_price)
+    elif order == "m02":
+        total_price = 100*quant
+        print("Your transaction is complete ")
+        print("Your total is,",total_price)
+
+    elif order == "m03":
+        total_price = 200*quant
+        print("Your transaction is complete ")
+        print("Your total is,",total_price)
+
+    elif order == "m04":
+        total_price = 200*quant
+        print("Your transaction is complete ")
+        print("Your total is,",total_price)
+
+    elif order == "m05":
+        total_price = 250*quant
+        print("Your transaction is complete ")
+        print("Your total is,",total_price)
+
+    else:
+        print("Enter the correct value")
+        payment_page()
+
+landing_page()
+continue_page()
+payment_page()
+
